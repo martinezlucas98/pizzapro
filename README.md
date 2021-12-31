@@ -30,8 +30,8 @@ Luego debemos asignar algunas variables globales. Esto es debido a que utilizamo
 Los pasos son:
 1. Click en el botón con forma de ojo en la esquina superior derecha.
 2. Click en **Agregar** (el que se encuentra al lado de **Globales**)
-3. Agregamos en la columna **Variables** la palabra ```jwt_access``` y en la columna del **Valor Actual** escribimos: ```Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQwOTUyMjcwLCJpYXQiOjE2NDA5MzA2NzAsImp0aSI6IjVkNjQ3NDU1MzNkNjRkODI4YWUwOGJiZTc2YWRlYTRhIiwidXNlcl9pZCI6Mn0.5PwScJSQ3NhI0SnIgpMKP95T_iroNGNRT-ApmUyJK_g``` un token JWT válido.
-4. Ahora hacemos lo misma para el token básico de Django.  Agregamos en la columna **Variables** la palabra ```basic_token``` y en la columna del **Valor Actual** escribimos: ```Token c257a92dac54640a7048e215f78dd36205c7a954``` un token válido.
+3. Agregamos en la columna **Variables** la palabra ```jwt_access``` y en la columna del **Valor Actual** escribimos, por ejemplo: ```Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQwOTUyMjcwLCJpYXQiOjE2NDA5MzA2NzAsImp0aSI6IjVkNjQ3NDU1MzNkNjRkODI4YWUwOGJiZTc2YWRlYTRhIiwidXNlcl9pZCI6Mn0.5PwScJSQ3NhI0SnIgpMKP95T_iroNGNRT-ApmUyJK_g``` un token JWT válido.
+4. Ahora hacemos lo misma para el token básico de Django.  Agregamos en la columna **Variables** la palabra ```basic_token``` y en la columna del **Valor Actual** escribimos, por ejemplo: ```Token c257a92dac54640a7048e215f78dd36205c7a954``` un token válido.
 
 Debe quedar de la siguiente manera:
 ![Imagen de ejemplo](multimedia/variables.png)
