@@ -1,0 +1,516 @@
+{
+	"info": {
+		"_postman_id": "989e3651-34fc-4feb-8f1f-aba7c622d02a",
+		"name": "Pizzeria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Django basic token for user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "worker",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "pizzaWorker123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/basic-token-auth/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"basic-token-auth",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get JWT for user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "worker",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "pizzaWorker123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/token/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar pizza",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{basic_token}}",
+						"description": "Auth con Djason Basic Token",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt_access}}",
+						"description": "Auth con JWT",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "PMTR",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Pizza Master",
+							"type": "text"
+						},
+						{
+							"key": "precio",
+							"value": "107000",
+							"type": "text"
+						},
+						{
+							"key": "activo",
+							"value": "False",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/pizza/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pizza",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar pizza",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{basic_token}}",
+						"description": "Auth con Django Basic Token",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt_access}}",
+						"description": "Auth con JWT",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "Pizza 4 queso",
+							"type": "text"
+						},
+						{
+							"key": "precio",
+							"value": "27000",
+							"type": "text"
+						},
+						{
+							"key": "activo",
+							"value": "True",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/pizza/P4Q",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pizza",
+						"P4Q"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar pizzas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{basic_token}}",
+						"description": "Auth con Django Basic Token",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt_access}}",
+						"description": "Auth con JWT",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "127.0.0.1:8000/api/pizza/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pizza",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar ingrediente",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{basic_token}}",
+						"description": "Auth con Django Basic Token",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt_access}}",
+						"description": "Auth con JWT",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "ched2",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Queso Cheddar2",
+							"type": "text"
+						},
+						{
+							"key": "categoria",
+							"value": "Premium",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/ingrediente/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ingrediente",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar ingrediente",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{basic_token}}",
+						"description": "Auth con Django Basic Token",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt_access}}",
+						"description": "Auth con JWT",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "127.0.0.1:8000/api/ingrediente/CHED2",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ingrediente",
+						"CHED2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar ingrediente",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{basic_token}}",
+						"description": "Auth con Django Basic Token",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt_access}}",
+						"description": "Auth con JWT",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "categoria",
+							"value": "basico",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Queso Cheddar",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/ingrediente/CHED",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ingrediente",
+						"CHED"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar ingredientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/api/ingrediente/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ingrediente",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar ingrediente a pizza",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pizza",
+							"value": "PLIM",
+							"type": "text"
+						},
+						{
+							"key": "ingrediente",
+							"value": "QUAZ",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/ingrediente-x-pizza/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ingrediente-x-pizza",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar ingrediente de pizza",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/api/ingrediente-x-pizza/PLIM/CHED",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ingrediente-x-pizza",
+						"PLIM",
+						"CHED"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ver pizza detalle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/api/pizza-detalle/PLIM",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pizza-detalle",
+						"PLIM"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "37d36878-a0c6-4efe-90d7-f89682390c9a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "04d67105-af57-4dc5-a99f-df352f385331",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
