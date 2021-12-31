@@ -3,7 +3,7 @@ Prueba para candidatos a desarrollador backend en TDP S.A.
 
 
 ## Instalación 💾
-> Se recomienda trabajar en un entorno virtual
+> Se recomienda trabajar en un entorno virtual, ejemplo : `python -m venv env`
 
 La instalación es bastante sencilla:
 1. Clonar (o descargar) el repositorio.
@@ -48,10 +48,12 @@ Para activar, desactivar o alternar un token (es decir si quiere usarlo o no) si
 
 
 ## Endpoints 🚪
+>**Observación:** la base URL por defecto es 127.0.0.1:8000
+
 | Endpoint                                            | Verbo&nbsp;HTTP&nbsp; | Parametros | Descripción |
 |---------------------------------------------------------|:----------:|------------|-------------|
-| /basic-token-auth/                                      | POST       | username :: tipo String <br/> password :: tipo String| Devuelve el token Django de autenticación del usuario cuyas credenciales fueron proveidas (en caso de que sean correctas).|
-| /api/token/                                             | POST       | username :: tipo String <br/> password :: tipo String| Devuelve el JWT de autenticación del usuario cuyas credenciales fueron proveidas (en caso de que sean correctas).|
+| /basic-token-auth/                                      | POST       | username :: tipo String <br/> password :: tipo String| Login. Devuelve el token Django de autenticación del usuario cuyas credenciales fueron proveidas (en caso de que sean correctas).|
+| /api/token/                                             | POST       | username :: tipo String <br/> password :: tipo String| Login. Devuelve el JWT de autenticación del usuario cuyas credenciales fueron proveidas (en caso de que sean correctas).|
 | /api/pizza/                                             | POST       | id :: tipo String<br/> nombre :: tipo String<br/> precio :: tipo Int<br/> activo:: tipo Boolean| Crea una nueva pizza. Se necesita ser usuario staff o superuser.|
 | /api/pizza/`<id>`                                       | PATCH      | nombre :: tipo String<br/> precio :: tipo Int<br/> activo :: tipo Boolean| Modifica la pizza cuyo id es `<id>`. Se necesita ser usuario staff o superuser.|
 | /api/pizza/                                             | GET        | - | Devuelve todas las pizzas activas. Si el usuario es staff o superuser, también devuelve las no activas.|
@@ -62,6 +64,15 @@ Para activar, desactivar o alternar un token (es decir si quiere usarlo o no) si
 | /api/ingrediente-x-pizza/                               | POST       | pizza :: tipo String <br/> ingrediente :: tipo String| Permite agregar un ingrediente a una pizza. El parametro `pizza` representa el id de esta, y el parametro `ingrediente` el ingrediente para agregarle.|
 | /api/ingrediente-x-pizza/`<pizza_id>`/`<ingrediente_id>`| DEL      | - | Permite quitar el ingrediente (con id igual a `<ingrediente_id>`) de la pizza (con id igual a `<pizza_id>`).|
 | /api/pizza-detalle/`<id>`                               | GET        | - | Permite ver el "detalle" (id, nombre, precio, activo, ingredientes) de la pizza con id igual a `<id>`|
+
+### Sobre "Quitar Ingrediente de una Pizza": /api/ingrediente-x-pizza/`<pizza_id>`/`<ingrediente_id>`
+Se consideraron dos enfoques posibles:
+1. Eliminar todos los ingredientes que coincidan con `<ingrediente_id>` para una pizza. Es decir, si una pizza tiene 4 ingredientes "Queso Azul", los cuatro serían eliminados de la pizza.
+2. Eliminar solo una ocurrencia del ingrediente `<ingrediente_id>` de una pizza. Es decir, si una pizza tiene 4 ingredientes "Queso Azul", solo se elimina uno de ellos qudándose así con 3 "Queso Azul".
+
+El enfoque decidido fue el segundo. Ya que esto permite poder agregar ingredientes "extra a la pizza". Entonces si el usuario quiere una pizza que contiene 4 de "Queso Cheddar", pero este solo quiere 3 de "Queso Cheddar", entonces puede quitarle solo uno y tener la pizza a su medida. 
+
+> Otra manera de lograr este efecto utilizando el primer enfoque sería agregando un campo "Cantidad" al modelo Ingrediente.
 
 
 ## Usuarios 👨🏽‍💻
