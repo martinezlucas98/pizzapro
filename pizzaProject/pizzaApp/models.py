@@ -42,3 +42,6 @@ class Ingrediente (models.Model):
 class Ingredientes_x_pizza (models.Model):
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
     ingrediente = models.ForeignKey(Ingrediente, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return ("Pizza: "+self.pizza.nombre + " || Ingrediente: "+self.ingrediente.nombre)
