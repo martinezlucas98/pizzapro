@@ -18,9 +18,14 @@ from django.urls import path
 from django.urls import include
 
 from rest_framework.authtoken import views
+from rest_framework_simplejwt import views as jwt_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('basic-token-auth/', views.obtain_auth_token),
+    path('api/token/', jwt_views.TokenObtainPairView.as_view()),
+    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view()),
+    #path('', include('app.urls')),
     path('api/',include('pizzaApp.urls')),
 ]
