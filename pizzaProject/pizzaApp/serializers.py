@@ -7,6 +7,11 @@ class PizzaSerializer(serializers.HyperlinkedModelSerializer):
         model = Pizza
         fields = ['id','nombre','precio','activo']
 
+class PizzaListSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Pizza
+        fields = ['id','nombre','precio']
+
 class IngredienteSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Ingrediente

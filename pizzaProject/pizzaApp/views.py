@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework import status
-from .serializers import Ingredientes_x_pizzaSerializer, PizzaSerializer, IngredienteSerializer
+from .serializers import Ingredientes_x_pizzaSerializer, PizzaSerializer, IngredienteSerializer, PizzaListSerializer
 from .models import Ingredientes_x_pizza, Pizza, Ingrediente
 # from rest_framework.permissions import IsAuthenticated
 # from rest_framework.authentication import TokenAuthentication
@@ -39,7 +39,14 @@ class PizzaView(APIView):
             items = Pizza.objects.all()
         else:
             items = Pizza.objects.filter(activo=True)
-        serializer = PizzaSerializer(items, many=True)
+        serializer = PizzaListSerializer(items, many=True)
+        data = []
+        for i in range(0,len(serializer.data)):
+            data.append(serializer.data[i])
+            ingredientes= Ingredientes_x_pizza.objects.filter(pizza=data[i]["id"]).values('ingrediente')
+            data[i]['ingredientes_cant'] = len(ingredientes)
+
+        print(data)
         return Response({"status": "ok", "data": serializer.data}, status=status.HTTP_200_OK)
 
 
