@@ -53,11 +53,15 @@ class IngredienteView(APIView):
             request.data['categoria'] = request.data['categoria'].upper()
             request.data._mutable = False
             serializer = IngredienteSerializer(data=request.data, context= {'request': request})
-            if serializer.is_valid():
-                serializer.save()
-                return Response({'status': 'ok', 'data': serializer.data}, status=status.HTTP_200_OK)
-            else:
-                return Response({'status': 'error', 'data': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+            try:
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response({'status': 'ok', 'data': serializer.data}, status=status.HTTP_200_OK)
+                else:
+                    return Response({'status': 'error', 'data': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+            except:
+                return Response({'status': 'error', 'detail': 'Mensaje estatico: ingrediente con este id ya existe.'}, status=status.HTTP_400_BAD_REQUEST)
+
         else:
             return Response({"status": "error", "detail": "Se necesita autorización."})
 
