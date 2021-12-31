@@ -23,7 +23,7 @@ Lo primero que se debe hacer para poder probar los endpoints es importar el arch
 2. Seleccionar el botón de **Importar** ubicado en la esquina superior izquierda.
 3. Seleccionar el archivo Pizzeria.postman_collection.json
 
-Para más detalles puede ver [este video](multimedia/postman_import.mp4) guía.
+Para más detalles puede ver [este video](https://mega.nz/file/15wwSZ4Z#Ofy8DcPzumoGTyTJuTWs97lDUfIdxITCVR_kxJXx9Fw) guía.
 
 Luego debemos asignar algunas variables globales. Esto es debido a que utilizamos estas variables para almacenar los tokens de autenticación (token básico de django y JWT) ya que son necesarios para acceder a ciertos endpoints.
 
@@ -40,7 +40,7 @@ Si esos tokens ya no son válidos, usted puede obtener los nuevos tokens por med
 
 Recuerde agregar las palabras Bearer y Token respectivamente antes del propio token.
 
-Si tiene alguna duda sobre los pasos a realizar para configurar las variables, puede consultar nuestro [video guía](multimedia/tokens.mp4) de tutorial.
+Si tiene alguna duda sobre los pasos a realizar para configurar las variables, puede consultar nuestro [video guía](https://mega.nz/file/ok4CxLhb#MH-ZF7hoiIwjAdvy2F-fpw7G3vVF8LcsqW02aSCWGwc) de tutorial.
 
 Una vez que cuente con los tokens ya puede empezar a realizar las diferentes consultas a los endpoints!!✨
 
